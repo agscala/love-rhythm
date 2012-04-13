@@ -9,13 +9,13 @@ function RhythmManager:update(dt)
 
 	self.timeout_whole:update(dt)
 	self.timeout_half:update(dt)
-	-- self.timeout_quarter:update(dt)
-	-- self.timeout_eigth:update(dt)
+	self.timeout_quarter:update(dt)
+	self.timeout_eigth:update(dt)
 
 	self:notify_whole()
 	self:notify_half()
-	-- self:notify_eigth()
-	-- self:notify_quarter()
+	self:notify_eigth()
+	self:notify_quarter()
 end
 
 function RhythmManager:notify_whole()
@@ -58,7 +58,7 @@ function RhythmManager:notify_eigth()
 		-- print("EIGTH")
 		for i, subscriber in ipairs(self.subscribers) do
 			if subscriber.do_bump_eigth then
-				subscriber:bump_eighth()
+				subscriber:bump_eigth()
 			end
 		end
 	end
@@ -99,7 +99,7 @@ end
 function RhythmManager:is_beat(beat_size)
 	local beat_size = beat_size or 1.0
 
-	if self:beat_accuracy(beat_size) >= 99 then
+	if self:beat_accuracy(beat_size) >= 98 then
 		return true
 	else
 		return false

@@ -16,11 +16,21 @@ function love.load()
 	box2 = Box:new(340, 10, 30, 30)
 	box2.do_bump_half = true
 	Rhythm:subscribe(box2)
+
+	box3 = Box:new(380, 10, 30, 30)
+	box3.do_bump_quarter = true
+	Rhythm:subscribe(box3)
+
+	box4 = Box:new(420, 10, 30, 30)
+	box4.do_bump_eigth = true
+	Rhythm:subscribe(box4)
 end
 
 function love.draw()
 	box:draw()
 	box2:draw()
+	box3:draw()
+	box4:draw()
 
 	love.graphics.setColor(255, 255, 255)
 

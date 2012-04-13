@@ -22,14 +22,6 @@ function Box:draw()
 	love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
 
-function Box:bump_half()
-	if self.color == red then
-		self.color = blue
-	else
-		self.color = red
-	end
-end
-
 function Box:bump_whole()
 	if self.color == red then
 		self.color = blue
@@ -38,3 +30,26 @@ function Box:bump_whole()
 	end
 end
 
+function Box:bump_half()
+	if self.color == red then
+		self.color = blue
+	else
+		self.color = red
+	end
+end
+
+function Box:bump_quarter()
+	if self.color == red then
+		self.color = blue
+	else
+		self.color = red
+	end
+end
+
+function Box:bump_eigth()
+	if self.color == red then
+		self.color = blue
+	else
+		self.color = red
+	end
+end
