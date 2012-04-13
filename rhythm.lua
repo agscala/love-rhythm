@@ -9,47 +9,57 @@ function RhythmManager:update(dt)
 
 	self.timeout_whole:update(dt)
 	self.timeout_half:update(dt)
-	self.timeout_quarter:update(dt)
-	self.timeout_eigth:update(dt)
+	-- self.timeout_quarter:update(dt)
+	-- self.timeout_eigth:update(dt)
 
 	self:notify_whole()
 	self:notify_half()
-	self:notify_eigth()
-	self:notify_quarter()
+	-- self:notify_eigth()
+	-- self:notify_quarter()
 end
 
 function RhythmManager:notify_whole()
 	if self:is_beat(1.0) and self.timeout_whole:is_ready() then
-		print("WHOLE")
+		-- print("WHOLE")
 		for i, subscriber in ipairs(self.subscribers) do
-			subscriber:bump_whole()
+			-- print(subscriber.do_bump_whole)
+			if subscriber.do_bump_whole then
+				subscriber:bump_whole()
+			end
 		end
 	end
 end
 
 function RhythmManager:notify_half()
 	if self:is_beat(0.5) and self.timeout_half:is_ready() then
-		print("HALF")
+		-- print("HALF")
 		for i, subscriber in ipairs(self.subscribers) do
-			subscriber:bump_half()
+			-- print(subscriber.do_bump_half)
+			if subscriber.do_bump_half then
+				subscriber:bump_half()
+			end
 		end
 	end
 end
 
 function RhythmManager:notify_quarter()
 	if self:is_beat(0.25) and self.timeout_quarter:is_ready() then
-		print("QUARTER")
+		-- print("QUARTER")
 		for i, subscriber in ipairs(self.subscribers) do
-			subscriber:bump_quarter()
+			if subscriber.do_bump_quarter then
+				subscriber:bump_quarter()
+			end
 		end
 	end
 end
 
 function RhythmManager:notify_eigth()
 	if self:is_beat(0.125) and self.timeout_eigth:is_ready() then
-		print("EIGTH")
+		-- print("EIGTH")
 		for i, subscriber in ipairs(self.subscribers) do
-			subscriber:bump_eighth()
+			if subscriber.do_bump_eigth then
+				subscriber:bump_eighth()
+			end
 		end
 	end
 end

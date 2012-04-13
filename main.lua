@@ -10,11 +10,17 @@ function love.load()
 	last_accuracy = 0
 
 	box = Box:new(300, 10, 30, 30)
+	box.do_bump_whole = true
 	Rhythm:subscribe(box)
+
+	box2 = Box:new(340, 10, 30, 30)
+	box2.do_bump_half = true
+	Rhythm:subscribe(box2)
 end
 
 function love.draw()
 	box:draw()
+	box2:draw()
 
 	love.graphics.setColor(255, 255, 255)
 

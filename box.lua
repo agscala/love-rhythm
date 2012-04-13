@@ -30,3 +30,11 @@ function Box:bump_half()
 	end
 end
 
+function Box:bump_whole()
+	if self.color == red then
+		self.color = blue
+	else
+		self.color = red
+	end
+end
+
