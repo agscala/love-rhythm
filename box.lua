@@ -1,5 +1,6 @@
 require "rhythm"
 require "rhythmaware"
+require "math"
 
 Box = class("Box")
 Box:include(RhythmAware)
