@@ -22,6 +22,7 @@ end
 
 function RhythmManager:notify_whole()
 	if self.timeout_whole:is_ready() then
+		self.timeout_whole:continue()
 		-- print("WHOLE")
 		for i, subscriber in ipairs(self.subscribers) do
 			-- print(subscriber.do_bump_whole)
@@ -34,6 +35,7 @@ end
 
 function RhythmManager:notify_half()
 	if self.timeout_half:is_ready() then
+		self.timeout_half:continue()
 		-- print("HALF")
 		for i, subscriber in ipairs(self.subscribers) do
 			-- print(subscriber.do_bump_half)
@@ -46,6 +48,7 @@ end
 
 function RhythmManager:notify_quarter()
 	if self.timeout_quarter:is_ready() then
+		self.timeout_quarter:continue()
 		-- print("QUARTER")
 		for i, subscriber in ipairs(self.subscribers) do
 			if subscriber.do_bump_quarter then
@@ -57,6 +60,7 @@ end
 
 function RhythmManager:notify_eigth()
 	if self.timeout_eigth:is_ready() then
+		self.timeout_eigth:continue()
 		-- print("EIGTH")
 		for i, subscriber in ipairs(self.subscribers) do
 			if subscriber.do_bump_eigth then
@@ -67,6 +71,7 @@ function RhythmManager:notify_eigth()
 end
 
 function RhythmManager:initialize(bpm)
+	self.bpm = bpm
 	self.beat_length = 60 / bpm
 	self.rate = 0
 	self.total_elapsed = 0
@@ -93,8 +98,13 @@ function RhythmManager:stop()
 	self.timeout_eigth:restart(dt)
 end
 
-function RhythmManager:resume()
+function RhythmManager:start()
 	self.is_running = true
+end
+
+function RhythmManager:restart()
+	self:stop()
+	self:start()
 end
 
 function RhythmManager:subscribe(object)
@@ -120,5 +130,5 @@ function RhythmManager:is_beat(beat_size)
 	end
 end
 
-Rhythm = RhythmManager:new(140)
+Rhythm = RhythmManager:new(96)
 

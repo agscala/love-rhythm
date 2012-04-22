@@ -1,4 +1,3 @@
-require "rhythm"
 require "rhythmaware"
 require "math"
 
@@ -54,3 +53,4 @@ function Box:bump_eigth()
 		self.color = red
 	end
 end
+
