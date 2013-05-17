@@ -3,9 +3,6 @@ require "middleclass"
 GridRender = class("GridRender")
 GridRender:include(RhythmAware)
 
-local red = { 255, 0, 0 }
-local blue = { 0, 0, 255 }
-
 function GridRender:initialize(x, y, cell_width, cell_height, grid)
 	self.x = x
 	self.y = y
@@ -41,11 +38,11 @@ end
 
 function GridRender:update(dt)
 	if love.keyboard.isDown("left") then
-		if self.cell.grid_column > 1 then
+		if self.cell.column > 1 then
 			self.cell:move_left()
 		end
 	elseif love.keyboard.isDown("right") then
-		if self.cell.grid_column < self.grid.num_columns then
+		if self.cell.column < self.grid.num_columns then
 			self.cell:move_right()
 		end
 	end
@@ -57,7 +54,7 @@ function GridRender:update(dt)
 		self.cell:drop(dt)
 	else
 		self.cell.y = max_y
-		self.grid.add_cell(self.cell.column, self.cell)
+		self.grid:add_cell(self.cell)
 	end
 end
 
