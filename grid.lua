@@ -22,7 +22,7 @@ end
 
 function Grid:add_cell(cell)
 	if cell.column <= self.num_columns then
-		table.insert(self.grid[column], cell)
+		-- table.insert(self.grid[column], cell)
 	end
 end
 

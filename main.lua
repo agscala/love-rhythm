@@ -3,6 +3,7 @@ require "math"
 require "rhythm"
 require "emitter"
 require "player"
+require "car"
 
 require "grid"
 require "gridrender"
@@ -14,6 +15,8 @@ function love.load()
 	rate = 0
 	total_elapsed = 0
 	last_accuracy = 0
+
+	car = Car:new(200, 200)
 
 	box = Box:new(300, 10, 30, 30)
 	box.do_bump_whole = true
