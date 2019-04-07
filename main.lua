@@ -41,7 +41,8 @@ function love.load()
 	emitter.do_bump_eigth = true
 	Rhythm:subscribe(emitter)
 
-	local sound = love.audio.newSource("Anitek-Calling.mp3")
+	local data = love.sound.newSoundData("Anitek-Calling.mp3")
+	local sound = love.audio.newSource(data)
 	love.audio.play(sound)
 
 	player = Player:new(200, 300)
